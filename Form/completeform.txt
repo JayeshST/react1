@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./details.js"></script>
+</head>
+<body>
+    Name: <input type="text" id="nm" name="nm" placeholder="Enter Your Name" required><br><br>
+    Birth Date: <input type="date" name="dt" id="dt"><br><br>
+    Email Address: <input type="email" name="mail" id="mail" placeholder="Enter Your Email" required><br><br>
+    Gender: <input type="radio" id="ml" name="rd" value="Male"><label for="ml">Male</label>
+    <input type="radio" id="fml" name="rd" value="Female"><label for="fml">Female</label><br><br>
+    Lucky Number: <input type="text" id="lu" name="lu" placeholder="Enter Your Lucky Number" required><br><br>
+    Favourite Food: <input type="checkbox" name="chk" id="piz" value="Pizza"><label for="piz">Pizza</label>
+    <input type="checkbox" name="chk" id="pas" value="Pasta"><label for="pas">Pasta</label>
+    <input type="checkbox" name="chk" id="chi" value="Chinese"><label for="chi">Chinese</label>
+    <br><br>
+    <button type="button" name="btn" id="btn" onclick="validate()">Send Data</button>
+
+    <div id="mydiv"></div>
+</body>
+</html>
+
+
+--------------------------------------------------------------------------------------
+
+
+function validate(){
+    var name=document.getElementById("nm").value;
+    var date=document.getElementById("dt").value;
+    var lno=parseInt(document.getElementById("lu").value);
+    var email=document.getElementById("mail").value;
+    var gender=document.getElementsByName("rd");
+    // alert(gender)
+    for(i=0;i<gender.length;i++){
+        if(gender[i].checked){
+            op=gender[i].value;
+        }
+    }
+    // alert(op);
+    var food=[];
+    var ff=document.getElementsByName("chk");
+    // alert(ff);
+    for(i=0;i<ff.length;i++){
+        if(ff[i].checked){
+            food.push(ff[i].value);
+        }
+    }
+    // alert(food);
+    // document.getElementById("mydiv").innerHTML="Name : "+name+"<br>Birth Date : "+date+"<br>Email : "+email+"<br>Gender : "+op+"<br>Lucky Number : "+lno+"<br>Favourite Food : "+food;
+   patt=/^(?=.*[A-Za-z])$/;
+   if(name.length<10 && lno.toString().length<4){
+    document.getElementById("mydiv").innerHTML="Name : "+name+"<br>Birth Date : "+date+"<br>Email : "+email+"<br>Gender : "+op+"<br>Lucky Number : "+lno+"<br>Favourite Food : "+food;
+   }else{
+    document.getElementById("mydiv").innerHTML="Invalid Data"
+    
+   }
+
+}
+
+
+
+
+
+
